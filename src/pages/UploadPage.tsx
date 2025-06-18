@@ -42,13 +42,19 @@ const UploadPage = () => {
         mimetype: file.type,
       },
     };
-    uploadFile({ uploadData, file });
+    try {
+      uploadFile({ uploadData, file });
+    } catch (e: any) {
+      console.log(e);
+    } finally {
+      handleClearFile();
+    }
   };
 
   return (
-    <div className="flex flex-col justify-center w-auto items-center min-h-screen gap-2">
+    <div className="flex flex-col justify-center w-auto p-10 gap-2">
       <FileTable />
-      <h2 className="text-2xl">File Upload</h2>
+      <h2 className="font-bold">File Upload</h2>
       <form
         onSubmit={handleFileUpload}
         className="flex flex-col justify-center w-full max-w-sm gap-4"
@@ -63,7 +69,7 @@ const UploadPage = () => {
         {fileUrl && (
           <PreviewComponent fileUrl={fileUrl} fileType={file!.type} />
         )}
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4">
           <Button type="submit" className="max-w-fit">
             Upload
           </Button>
