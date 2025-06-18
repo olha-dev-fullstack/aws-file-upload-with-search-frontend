@@ -13,6 +13,13 @@ class ApiClient {
         "Content-Type": "application/json",
       },
     });
+    this.client.interceptors.request.use((config) => {
+      const userEmail = localStorage.getItem("userEmail");
+      if (userEmail) {
+        config.headers["x-user-email"] = userEmail;
+      }
+      return config;
+    });
   }
 
   public get<T = any>(

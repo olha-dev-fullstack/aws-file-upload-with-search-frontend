@@ -5,3 +5,10 @@ export type UploadFileData = {
     mimetype: string;
   };
 };
+
+export interface FileItem {
+  id: string;
+  filename: string;
+  url: string;
+  uploadedAt: string;
+}

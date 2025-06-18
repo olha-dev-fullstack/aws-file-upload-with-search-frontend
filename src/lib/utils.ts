@@ -10,9 +10,9 @@ export const isAuthenticated = (): boolean => {
   return getItem("userEmail");
 };
 
-export function setItem(key: string, value: unknown) {
+export function setItem(key: string, value: string) {
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, value);
   } catch (error) {
     console.error("Error saving to localStorage", error);
   }
@@ -21,7 +21,7 @@ export function setItem(key: string, value: unknown) {
 export function getItem(key: string) {
   try {
     const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : undefined;
+    return item;
   } catch (error) {
     console.error("Error reading from localStorage", error);
   }

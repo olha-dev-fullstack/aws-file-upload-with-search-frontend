@@ -1,5 +1,5 @@
 import { apiClient } from "@/lib/api/apiClient";
-import { UploadFileData } from "@/lib/types/uploadData";
+import { UploadFileData } from "@/lib/types/file";
 import { uploadToS3 } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
 

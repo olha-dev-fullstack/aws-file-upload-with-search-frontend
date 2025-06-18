@@ -1,9 +1,10 @@
+import { FileTable } from "@/components/FileTable";
 import PreviewComponent from "@/components/PreviewComponents";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import usePersistedState from "@/hooks/usePersistedState";
 import { useUploadFile } from "@/hooks/useUploadFile";
-import { UploadFileData } from "@/lib/types/uploadData";
+import { UploadFileData } from "@/lib/types/file";
 import { useState, type FormEvent } from "react";
 
 const UploadPage = () => {
@@ -46,6 +47,7 @@ const UploadPage = () => {
 
   return (
     <div className="flex flex-col justify-center w-auto items-center min-h-screen gap-2">
+      <FileTable />
       <h2 className="text-2xl">File Upload</h2>
       <form
         onSubmit={handleFileUpload}
