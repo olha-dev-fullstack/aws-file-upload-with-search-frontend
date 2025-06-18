@@ -1,3 +1,4 @@
+import axios from "axios";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -13,7 +14,7 @@ export function setItem(key: string, value: unknown) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    console.error('Error saving to localStorage', error);
+    console.error("Error saving to localStorage", error);
   }
 }
 
@@ -22,6 +23,24 @@ export function getItem(key: string) {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : undefined;
   } catch (error) {
-    console.error('Error reading from localStorage', error);
+    console.error("Error reading from localStorage", error);
   }
 }
+
+export const uploadToS3 = async (presignedUrl: string, file: File) => {
+  console.log(presignedUrl);
+  const mimetype = file.type;
+  console.log(mimetype);
+  try {
+    const response = await axios.put(presignedUrl, file, {
+      headers: {
+        "Content-Type": mimetype,
+      },
+    });
+    console.log(response);
+    
+    return response.data;
+  } catch (e: any) {
+    console.log(e);
+  }
+};
