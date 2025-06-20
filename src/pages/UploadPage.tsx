@@ -1,3 +1,4 @@
+import { FileSearch } from "@/components/FileSearch";
 import { FileTable } from "@/components/FileTable";
 import PreviewComponent from "@/components/PreviewComponents";
 import { Button } from "@/components/ui/button";
@@ -38,7 +39,7 @@ const UploadPage = () => {
     const uploadData: UploadFileData = {
       userEmail: email,
       fileData: {
-        filename: file.name,
+        filename: file.name.replace(/ /g, "_"),
         mimetype: file.type,
       },
     };
@@ -53,6 +54,7 @@ const UploadPage = () => {
 
   return (
     <div className="flex flex-col justify-center w-auto p-10 gap-2">
+      <FileSearch />
       <FileTable />
       <h2 className="font-bold">File Upload</h2>
       <form

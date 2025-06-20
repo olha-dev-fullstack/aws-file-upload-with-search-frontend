@@ -15,7 +15,8 @@ export const FileTable = () => {
   if (isLoading) return <p>Loading files...</p>;
   if (error) return <p>Error loading files.</p>;
 
-  return (
+  return files?.length ? (
+    
     <div className="rounded-md border w-auto">
       <Table>
         <TableHeader>
@@ -36,5 +37,5 @@ export const FileTable = () => {
         </TableBody>
       </Table>
     </div>
-  );
+  ) : <p>No data</p>;
 };
