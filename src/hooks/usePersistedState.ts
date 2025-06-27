@@ -1,10 +1,8 @@
 import { getItem, setItem } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
-function usePersistedState<T>(key: string, initialValue: T) {
-  const [state, setState] = useState<T>(() => {
-    return getItem(key) ?? initialValue;
-  });
+function usePersistedState(key: string, initialValue: string) {
+  const [state, setState] = useState<string>(getItem(key) ?? initialValue);
 
   useEffect(() => {
     setItem(key, state);

@@ -5,7 +5,7 @@ import { useState, type FormEvent, type SetStateAction } from "react";
 import { useNavigate } from "react-router";
 
 const SignInPage = () => {
-  const [email, setEmail] = usePersistedState("userEmail", "");
+  const [, setEmail] = usePersistedState("userEmail", "");
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const handleChange = (event: {

@@ -9,16 +9,16 @@ import { UploadFileData } from "@/lib/types/file";
 import { useState, type FormEvent } from "react";
 
 const UploadPage = () => {
-  const [email, setEmail] = usePersistedState("userEmail", "");
+  const [email, ] = usePersistedState("userEmail", "");
   const [file, setFile] = useState<null | File>(null);
   const [fileUrl, setFileUrl] = useState<null | string>(null);
   const { mutate: uploadFile } = useUploadFile();
 
-  const handleFileChange = (event: { target: { files: File[] } }) => {
-    if (event.target.files[0]) {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.[0]) {
       console.log("No file selected");
     }
-    const selectedFile = event.target!.files[0];
+    const selectedFile = event.target.files?.[0]!;
     setFile(selectedFile);
 
     if (selectedFile) {

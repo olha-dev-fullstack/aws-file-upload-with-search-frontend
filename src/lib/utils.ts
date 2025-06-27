@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const isAuthenticated = (): boolean => {
-  return getItem("userEmail");
+  return getItem("userEmail") ? true : false;
 };
 
 export function setItem(key: string, value: string) {
@@ -38,7 +38,7 @@ export const uploadToS3 = async (presignedUrl: string, file: File) => {
       },
     });
     console.log(response);
-    
+
     return response.data;
   } catch (e: any) {
     console.log(e);

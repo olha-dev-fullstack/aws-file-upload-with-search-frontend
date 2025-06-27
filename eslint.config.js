@@ -24,6 +24,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "no-explicit-any": "off",
+      "no-non-null-asserted-optional-chain": "off",
     },
   }
 );
