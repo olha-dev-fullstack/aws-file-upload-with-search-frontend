@@ -7,7 +7,8 @@ import { protectedLoader } from "./lib/loaders/protectedLoader.ts";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: App,
+    Component: UploadPage,
+    loader: protectedLoader
   },
   {
     path: "/sign-in",
